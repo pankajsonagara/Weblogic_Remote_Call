@@ -9,12 +9,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.cramer.rm.pldt.utils.CommonUtils;
-import com.cramer.rm.pldt.utils.exceptions.PldtArmException;
 
 public class TestDataSource {
 
-	public static void main(String[] args) throws PldtArmException {
+	public static void main(String[] args) throws MyException {
 		Hashtable<String,String> env = new Hashtable<>();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "weblogic.jndi.WLInitialContextFactory");
 		env.put(Context.PROVIDER_URL, "t3://127.0.0.1:8081");
@@ -44,7 +42,7 @@ public class TestDataSource {
 				String value = getValue(conn);
 				System.out.println("value = " + value);
 			}
-		} catch (NamingException | PldtArmException e) {
+		} catch (NamingException | MyException  e) {
 			// a failure occurred
 			e.printStackTrace();
 		} finally {
